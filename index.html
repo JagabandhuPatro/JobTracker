@@ -27,10 +27,10 @@
             
             <div class="flex items-center gap-3">
                 <input type="file" id="importFile" accept=".json" class="hidden" onchange="importData(event)">
-                <button onclick="document.getElementById('importFile').click()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5 border border-slate-300">
+                <button onclick="document.getElementById('importFile').click()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5 border border-slate-300 shadow-sm">
                     <i data-lucide="upload" class="w-4 h-4"></i> <span class="hidden sm:inline">Load Backup</span>
                 </button>
-                <button onclick="exportData()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5 border border-slate-300">
+                <button onclick="exportData()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5 border border-slate-300 shadow-sm">
                     <i data-lucide="download" class="w-4 h-4"></i> <span class="hidden sm:inline">Save Backup</span>
                 </button>
 
@@ -46,31 +46,19 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
             <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex items-center gap-4">
                 <div class="bg-slate-100 p-3 rounded-full text-slate-600"><i data-lucide="layers" class="w-6 h-6"></i></div>
-                <div>
-                    <p class="text-sm text-slate-500 font-medium">Total Applications</p>
-                    <h3 id="kpi-total" class="text-2xl font-bold text-slate-900">0</h3>
-                </div>
+                <div><p class="text-sm text-slate-500 font-medium">Total Applications</p><h3 id="kpi-total" class="text-2xl font-bold text-slate-900">0</h3></div>
             </div>
             <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex items-center gap-4">
                 <div class="bg-blue-50 p-3 rounded-full text-blue-600"><i data-lucide="calendar" class="w-6 h-6"></i></div>
-                <div>
-                    <p class="text-sm text-slate-500 font-medium">Interviews</p>
-                    <h3 id="kpi-interviews" class="text-2xl font-bold text-slate-900">0</h3>
-                </div>
+                <div><p class="text-sm text-slate-500 font-medium">Interviews</p><h3 id="kpi-interviews" class="text-2xl font-bold text-slate-900">0</h3></div>
             </div>
             <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex items-center gap-4">
                 <div class="bg-green-50 p-3 rounded-full text-green-600"><i data-lucide="award" class="w-6 h-6"></i></div>
-                <div>
-                    <p class="text-sm text-slate-500 font-medium">Offers Received</p>
-                    <h3 id="kpi-offers" class="text-2xl font-bold text-slate-900">0</h3>
-                </div>
+                <div><p class="text-sm text-slate-500 font-medium">Offers Received</p><h3 id="kpi-offers" class="text-2xl font-bold text-slate-900">0</h3></div>
             </div>
             <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex items-center gap-4">
                 <div class="bg-red-50 p-3 rounded-full text-red-600"><i data-lucide="x-circle" class="w-6 h-6"></i></div>
-                <div>
-                    <p class="text-sm text-slate-500 font-medium">Rejections</p>
-                    <h3 id="kpi-rejections" class="text-2xl font-bold text-slate-900">0</h3>
-                </div>
+                <div><p class="text-sm text-slate-500 font-medium">Rejections</p><h3 id="kpi-rejections" class="text-2xl font-bold text-slate-900">0</h3></div>
             </div>
         </div>
 
@@ -97,11 +85,11 @@
                 <table class="w-full text-left border-collapse">
                     <thead>
                         <tr class="bg-slate-50 text-slate-500 text-xs uppercase tracking-wider border-b border-slate-200">
-                            <th class="p-4 font-semibold">Company & Role</th>
+                            <th class="p-4 font-semibold w-1/3">Company & Role</th>
                             <th class="p-4 font-semibold">Date Applied</th>
                             <th class="p-4 font-semibold">Stage</th>
-                            <th class="p-4 font-semibold">Match Score</th>
-                            <th class="p-4 font-semibold">Documents</th>
+                            <th class="p-4 font-semibold">Match</th>
+                            <th class="p-4 font-semibold">Requirements</th>
                             <th class="p-4 font-semibold text-right">Actions</th>
                         </tr>
                     </thead>
@@ -109,7 +97,6 @@
                         </tbody>
                 </table>
             </div>
-            
             <div id="emptyState" class="hidden flex flex-col items-center justify-center p-12 text-slate-500">
                 <i data-lucide="inbox" class="w-12 h-12 text-slate-300 mb-3"></i>
                 <p class="text-lg font-medium text-slate-700">No applications found</p>
@@ -119,7 +106,7 @@
     </main>
 
     <div id="jobModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto transform transition-all">
+        <div class="bg-white rounded-2xl shadow-xl w-full max-w-3xl max-h-[90vh] overflow-y-auto transform transition-all">
             <div class="p-6 border-b border-slate-100 flex justify-between items-center sticky top-0 bg-white z-10">
                 <h2 id="modalTitle" class="text-xl font-bold text-slate-800">Add New Application</h2>
                 <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600 transition-colors">
@@ -150,6 +137,31 @@
                     </div>
                 </div>
 
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-slate-50 p-4 rounded-lg border border-slate-100">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Degree Requirement</label>
+                        <select id="degree" class="w-full border border-slate-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none bg-white">
+                            <option value="">Not Specified</option>
+                            <option value="High School">High School</option>
+                            <option value="Bachelor's">Bachelor's</option>
+                            <option value="Master's">Master's</option>
+                            <option value="PhD">PhD</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Experience Required (Years)</label>
+                        <input type="number" id="experience" min="0" step="0.5" placeholder="e.g. 5" class="w-full border border-slate-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none bg-white">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Required Certifications</label>
+                        <input type="text" id="certifications" placeholder="e.g. PCAP, AWS CLF-C02, iSAQB" class="w-full border border-slate-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none bg-white">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Referral / Internal Contact</label>
+                        <input type="text" id="referral" placeholder="e.g. John Doe" class="w-full border border-slate-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none bg-white">
+                    </div>
+                </div>
+
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-sm font-medium text-slate-700 mb-1">Application Stage</label>
@@ -169,18 +181,21 @@
                 </div>
 
                 <div>
-                    <label class="block text-sm font-medium text-slate-700 mb-2">Required Documents Submitted</label>
-                    <div class="flex flex-wrap gap-4">
+                    <label class="block text-sm font-medium text-slate-700 mb-2">Submitted Documents</label>
+                    <div class="flex flex-wrap gap-4 mb-4">
                         <label class="flex items-center gap-2 text-sm text-slate-600"><input type="checkbox" value="Resume" class="doc-checkbox rounded text-blue-600 focus:ring-blue-500"> Resume</label>
                         <label class="flex items-center gap-2 text-sm text-slate-600"><input type="checkbox" value="Cover Letter" class="doc-checkbox rounded text-blue-600 focus:ring-blue-500"> Cover Letter</label>
                         <label class="flex items-center gap-2 text-sm text-slate-600"><input type="checkbox" value="Portfolio" class="doc-checkbox rounded text-blue-600 focus:ring-blue-500"> Portfolio</label>
-                        <label class="flex items-center gap-2 text-sm text-slate-600"><input type="checkbox" value="References" class="doc-checkbox rounded text-blue-600 focus:ring-blue-500"> References</label>
                     </div>
-                </div>
 
-                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-2">Additional Checks</label>
+                    <div class="flex flex-wrap gap-4 mb-4">
+                        <label class="flex items-center gap-2 text-sm text-slate-600 bg-purple-50 px-2 py-1 rounded border border-purple-100"><input type="checkbox" id="reqPR" class="rounded text-purple-600 focus:ring-purple-500"> PR / Valid Visa</label>
+                        <label class="flex items-center gap-2 text-sm text-slate-600 bg-yellow-50 px-2 py-1 rounded border border-yellow-100"><input type="checkbox" id="reqDL" class="rounded text-yellow-600 focus:ring-yellow-500"> Driver's License</label>
+                    </div>
+
                     <label class="block text-sm font-medium text-slate-700 mb-1">Job Description Keywords</label>
-                    <input type="text" id="keywords" placeholder="e.g. React, Python, Agile (comma separated)" class="w-full border border-slate-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none">
+                    <input type="text" id="keywords" placeholder="e.g. Python, Automation, Cloud (comma separated)" class="w-full border border-slate-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none">
                 </div>
                 
                 <div class="flex justify-end gap-3 pt-4 border-t border-slate-100">
@@ -194,9 +209,8 @@
     <script>
         // State Management
         let jobs = JSON.parse(localStorage.getItem('jobTrackerData')) || [];
-        let editingJobId = null; // Tracks if we are editing an existing job
+        let editingJobId = null; 
         
-        // Initialize Icons & UI on Load
         document.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
             renderDashboard();
@@ -206,7 +220,7 @@
         const modal = document.getElementById('jobModal');
         
         function openModal() {
-            editingJobId = null; // Reset edit state
+            editingJobId = null;
             document.getElementById('jobForm').reset();
             document.getElementById('dateApplied').valueAsDate = new Date();
             document.getElementById('scoreVal').innerText = "50";
@@ -218,15 +232,14 @@
             modal.classList.add('hidden');
         }
 
-        // Edit Job (Pre-fill form)
+        // Edit Job
         function editJob(id) {
             const jobToEdit = jobs.find(j => j.id === id);
             if (!jobToEdit) return;
 
-            editingJobId = id; // Set edit state
+            editingJobId = id;
             document.getElementById('modalTitle').innerText = "Edit Application";
             
-            // Populate fields
             document.getElementById('companyName').value = jobToEdit.company;
             document.getElementById('jobTitle').value = jobToEdit.title;
             document.getElementById('jobLink').value = jobToEdit.link || '';
@@ -235,24 +248,31 @@
             document.getElementById('matchScore').value = jobToEdit.match;
             document.getElementById('scoreVal').innerText = jobToEdit.match;
             document.getElementById('keywords').value = jobToEdit.keywords || '';
+            
+            // New Fields
+            document.getElementById('degree').value = jobToEdit.degree || '';
+            document.getElementById('experience').value = jobToEdit.experience || '';
+            document.getElementById('certifications').value = jobToEdit.certifications || '';
+            document.getElementById('referral').value = jobToEdit.referral || '';
+            document.getElementById('reqPR').checked = jobToEdit.pr || false;
+            document.getElementById('reqDL').checked = jobToEdit.dl || false;
 
-            // Populate checkboxes
             const checkboxes = document.querySelectorAll('.doc-checkbox');
             checkboxes.forEach(cb => {
-                cb.checked = jobToEdit.documents.includes(cb.value);
+                cb.checked = (jobToEdit.documents || []).includes(cb.value);
             });
 
             modal.classList.remove('hidden');
         }
 
-        // Submit Form (Handles both Add and Edit)
+        // Submit Form
         document.getElementById('jobForm').addEventListener('submit', (e) => {
             e.preventDefault();
             
             const docs = Array.from(document.querySelectorAll('.doc-checkbox:checked')).map(cb => cb.value);
             
             const jobData = {
-                id: editingJobId ? editingJobId : Date.now().toString(), // Use existing ID if editing
+                id: editingJobId ? editingJobId : Date.now().toString(),
                 company: document.getElementById('companyName').value,
                 title: document.getElementById('jobTitle').value,
                 link: document.getElementById('jobLink').value,
@@ -260,15 +280,20 @@
                 stage: document.getElementById('stage').value,
                 match: document.getElementById('matchScore').value,
                 documents: docs,
-                keywords: document.getElementById('keywords').value
+                keywords: document.getElementById('keywords').value,
+                // New Fields
+                degree: document.getElementById('degree').value,
+                experience: document.getElementById('experience').value,
+                certifications: document.getElementById('certifications').value,
+                referral: document.getElementById('referral').value,
+                pr: document.getElementById('reqPR').checked,
+                dl: document.getElementById('reqDL').checked
             };
 
             if (editingJobId) {
-                // Update existing job
                 const index = jobs.findIndex(j => j.id === editingJobId);
                 jobs[index] = jobData;
             } else {
-                // Add new job
                 jobs.unshift(jobData);
             }
 
@@ -286,17 +311,13 @@
             }
         }
 
-        // Persist to LocalStorage
         function saveData() {
             localStorage.setItem('jobTrackerData', JSON.stringify(jobs));
         }
 
-        // --- BACKUP & RESTORE LOGIC ---
+        // Backup & Restore
         function exportData() {
-            if (jobs.length === 0) {
-                alert("No jobs to save yet!");
-                return;
-            }
+            if (jobs.length === 0) return alert("No jobs to save yet!");
             const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(jobs, null, 2));
             const downloadAnchor = document.createElement('a');
             downloadAnchor.setAttribute("href", dataStr);
@@ -309,29 +330,20 @@
         function importData(event) {
             const file = event.target.files[0];
             if (!file) return;
-
             const reader = new FileReader();
             reader.onload = function(e) {
                 try {
                     const importedJobs = JSON.parse(e.target.result);
                     if (Array.isArray(importedJobs)) {
                         jobs = importedJobs;
-                        saveData(); 
-                        renderDashboard();
-                        alert("Backup successfully loaded!");
-                    } else {
-                        alert("Invalid backup file format.");
+                        saveData(); renderDashboard(); alert("Backup successfully loaded!");
                     }
-                } catch (error) {
-                    alert("Error reading the file. Make sure it is a valid JSON backup.");
-                }
+                } catch (error) { alert("Invalid JSON backup format."); }
             };
             reader.readAsText(file);
-            // Reset input so the same file can be selected again if needed
             event.target.value = '';
         }
 
-        // Stage Configuration (Colors & Badges)
         const stageConfig = {
             'Applied': 'bg-slate-100 text-slate-700 border-slate-200',
             'Phone Screen': 'bg-purple-100 text-purple-700 border-purple-200',
@@ -347,25 +359,21 @@
             return 'text-red-600 bg-red-50';
         }
 
-        // Render the Dashboard (KPIs and Table)
         function renderDashboard() {
             const searchQuery = document.getElementById('searchInput').value.toLowerCase();
             const stageFilter = document.getElementById('stageFilter').value;
 
-            // Filter Logic
             const filteredJobs = jobs.filter(job => {
                 const matchesSearch = job.company.toLowerCase().includes(searchQuery) || job.title.toLowerCase().includes(searchQuery);
                 const matchesStage = stageFilter === 'All' || job.stage === stageFilter;
                 return matchesSearch && matchesStage;
             });
 
-            // Update KPIs
             document.getElementById('kpi-total').innerText = jobs.length;
             document.getElementById('kpi-interviews').innerText = jobs.filter(j => j.stage === 'Interview' || j.stage === 'Phone Screen' || j.stage === 'Technical Test').length;
             document.getElementById('kpi-offers').innerText = jobs.filter(j => j.stage === 'Offer').length;
             document.getElementById('kpi-rejections').innerText = jobs.filter(j => j.stage === 'Rejected').length;
 
-            // Render Table
             const tbody = document.getElementById('jobTableBody');
             const emptyState = document.getElementById('emptyState');
             tbody.innerHTML = '';
@@ -378,20 +386,35 @@
                 emptyState.classList.remove('flex');
 
                 filteredJobs.forEach(job => {
-                    const allDocs = ['Resume', 'Cover Letter', 'Portfolio', 'References'];
-                    const docsHTML = allDocs.map(d => {
-                        const hasDoc = job.documents.includes(d);
+                    // Formatter for Documents & Requirements
+                    const allDocs = ['Resume', 'Cover Letter', 'Portfolio'];
+                    let reqsHTML = allDocs.map(d => {
+                        const hasDoc = (job.documents || []).includes(d);
                         return `<span class="inline-flex items-center gap-1 text-[10px] px-1.5 py-0.5 rounded-full border ${hasDoc ? 'bg-blue-50 border-blue-200 text-blue-700' : 'bg-slate-50 border-slate-200 text-slate-400 line-through'}">${d}</span>`;
-                    }).join(' ');
+                    });
+                    
+                    // Add PR and DL Badges if true
+                    if(job.pr) reqsHTML.push(`<span class="inline-flex items-center gap-1 text-[10px] px-1.5 py-0.5 rounded-full border bg-purple-50 border-purple-200 text-purple-700">PR/Visa</span>`);
+                    if(job.dl) reqsHTML.push(`<span class="inline-flex items-center gap-1 text-[10px] px-1.5 py-0.5 rounded-full border bg-yellow-50 border-yellow-200 text-yellow-700">Driver's Lic.</span>`);
+
+                    // Formatter for Metadata (Degree, Exp, Referral, Certs)
+                    let extraInfo = [];
+                    if(job.experience) extraInfo.push(`${job.experience} Yrs Exp`);
+                    if(job.degree) extraInfo.push(job.degree);
+                    if(job.certifications) extraInfo.push(`<i data-lucide="award" class="w-3 h-3 inline"></i> ${job.certifications}`);
+                    if(job.referral) extraInfo.push(`<i data-lucide="user" class="w-3 h-3 inline"></i> Ref: ${job.referral}`);
+                    
+                    let metaHTML = extraInfo.length > 0 ? `<div class="text-slate-400 text-xs mt-1.5 flex flex-wrap gap-x-3 gap-y-1">${extraInfo.join(' ')}</div>` : '';
 
                     const row = `
                         <tr class="hover:bg-slate-50 transition-colors group">
                             <td class="p-4">
                                 <div class="font-semibold text-slate-900">${job.company}</div>
-                                <div class="text-slate-500 text-xs flex items-center gap-2 mt-1">
+                                <div class="text-slate-500 text-xs flex items-center gap-2 mt-0.5">
                                     ${job.title}
                                     ${job.link ? `<a href="${job.link}" target="_blank" class="text-blue-500 hover:underline"><i data-lucide="external-link" class="w-3 h-3"></i></a>` : ''}
                                 </div>
+                                ${metaHTML}
                             </td>
                             <td class="p-4 text-slate-600 whitespace-nowrap">${new Date(job.date).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric'})}</td>
                             <td class="p-4">
@@ -408,8 +431,8 @@
                                 </div>
                             </td>
                             <td class="p-4">
-                                <div class="flex flex-wrap gap-1 max-w-[150px]">
-                                    ${docsHTML}
+                                <div class="flex flex-wrap gap-1 max-w-[180px]">
+                                    ${reqsHTML.join('')}
                                 </div>
                             </td>
                             <td class="p-4 text-right whitespace-nowrap">
@@ -425,11 +448,9 @@
                     tbody.insertAdjacentHTML('beforeend', row);
                 });
             }
-            // Re-initialize icons for newly added DOM elements
             lucide.createIcons();
         }
 
-        // Event Listeners for Filters
         document.getElementById('searchInput').addEventListener('input', renderDashboard);
         document.getElementById('stageFilter').addEventListener('change', renderDashboard);
     </script>
